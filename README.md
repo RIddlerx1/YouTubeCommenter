@@ -7,7 +7,7 @@
 
 ## 🚀 Overview
 
-This bot automatically engages with YouTube videos based on category IDs using a smart commenting system. It follows a sequential pattern initially, then switches to randomization after exhausting the comment pool - keeping your engagement fresh and authentic.
+This bot automatically engages with YouTube videos based on category IDs uploaded within the last 5 minutes using a smart commenting system. It follows a sequential pattern initially, then switches to randomization after exhausting the comment pool - keeping your engagement fresh and authentic.
 
 ## 🛠️ Prerequisites
 
