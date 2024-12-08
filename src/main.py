@@ -15,10 +15,15 @@ from concurrent.futures import ThreadPoolExecutor
 SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 MAX_CONCURRENT_REQUESTS = 3
+RESOURCES_DIR = 'resources'
 
 class QuotaManager:
     def __init__(self):
-        self.client_secrets = [f for f in os.listdir() if f.startswith('client_secret_') and f.endswith('.json')]
+        self.client_secrets = [
+            os.path.join(RESOURCES_DIR, f) 
+            for f in os.listdir(RESOURCES_DIR) 
+            if f.startswith('client_secret_') and f.endswith('.json')
+        ]
         self.current_index = 0
         self.services = []
         self._executor = ThreadPoolExecutor(max_workers=len(self.client_secrets))
@@ -35,7 +40,7 @@ class QuotaManager:
                 continue
 
     async def _get_credentials(self, client_secret):
-        token_file = f'token_{self.client_secrets.index(client_secret)}.pickle'
+        token_file = os.path.join(RESOURCES_DIR, f'token_{os.path.basename(client_secret)}.pickle')
         creds = None
         try:
             if os.path.exists(token_file):
@@ -72,7 +77,7 @@ class YouTubeCommenter:
 
     def __init__(self, quota_manager, comments_file):
         self.quota_manager = quota_manager
-        self.comments = self.load_comments(comments_file)
+        self.comments = self.load_comments(os.path.join(RESOURCES_DIR, comments_file))
         self.comment_index = 0
         self.CATEGORY_IDS = {'22': 'People & Blogs', '24': 'Entertainment', '20': 'Gaming'}
 
