@@ -3,11 +3,19 @@
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![YouTube Data API](https://img.shields.io/badge/YouTube%20Data-API%20v3-red)](https://developers.google.com/youtube/v3)
 
-> 🔮 Automate your YouTube engagement with intelligent comment sequencing and randomization
+> 🔮 Automate your YouTube engagement with automated self promotion
 
 ## 🚀 Overview
 
-This bot automatically engages with YouTube videos based on category IDs uploaded within the last 5 minutes using a smart commenting system. It follows a sequential pattern initially, then switches to randomization after exhausting the comment pool - keeping your engagement fresh and authentic.
+This bot automatically engages with English-language YouTube videos (excluding Shorts) based on category IDs that were uploaded within the last 5 minutes. It follows a sequential pattern initially, then switches to randomization after exhausting the comment pool - keeping your engagement fresh and authentic.
+
+Key Features:
+- Targets videos uploaded in the last 5 minutes
+- Focuses on English-language content only
+- Skips YouTube Shorts for better video targeting
+- Limits to 10 newest videos per category (configurable)
+- Continuously monitors for new uploads
+- Smart wait system that pauses until new eligible videos are published
 
 ## 🛠️ Prerequisites
 
@@ -65,6 +73,7 @@ pip install -r requirements.txt
    - Category IDs
    - Comment templates
    - Time intervals
+   - Video cap per category (default: 10)
 
 ## 🎮 Usage
 
@@ -89,4 +98,4 @@ This tool is for educational purposes only. Use responsibly and in accordance wi
 MIT License - feel free to modify and use this project as you wish!
 
 ---
-💻 Created with 🖤 by Riddlerx1
+💻 Created with 🖤 by [Riddlerx1]
